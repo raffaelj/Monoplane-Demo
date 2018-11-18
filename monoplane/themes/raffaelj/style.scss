@@ -1,0 +1,48 @@
+@import "raffaelj";
+@import "../_sass/base";
+@import "../_sass/mixins";
+@import "../_sass/form";
+
+body {
+  > header, > nav, > main, > footer, > aside {
+    max-width:98%;
+    margin:0 auto;
+  }
+  > header, > aside {
+    @extend header.letterhead;
+  }
+  > nav {
+    @extend #markdown-toc;
+  }
+  > aside ul{
+    list-style-type:none;
+    padding:0;
+    li {
+      display:inline-block;
+    }
+  }
+  > footer {
+    @extend .footnotes;
+    text-align:center;
+    > *{
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 .5em;
+      padding: 1em;
+      text-align:left;
+    }
+    ul,p{
+      margin-top:0;
+    }
+  }
+}
+article img.featured{
+  @extend .right;
+}
+
+
+@media print{
+  nav, footer{
+    display:none;
+  }
+}

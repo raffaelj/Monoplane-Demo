@@ -1,0 +1,34 @@
+//// colours
+
+$color-white: #fff;
+$color-white-transp: rgba(255,255,255,.8);
+$color-bg: #f4f4f4;
+
+$color-main:#ef5285;
+$color-main-dark:#e01557;
+
+$color-text: #000000;
+$color-text-light: #999;
+$color-text-dark: #555;
+
+$color-alarm: #AD000E;
+$color-error: #d50f2c;
+
+$border-radius: 0;
+
+
+
+////////// fonts
+// @font-face {
+    // font-family: 'open_sansregular';
+    // src: url('webfonts/OpenSans-Regular-webfont.woff') format('woff');
+    // font-weight: normal;
+    // font-style: normal;
+
+// }
+
+// $font: 'Open Sans', 'open_sansregular', Verdana, Helvetica, Arial, sans-serif;
+// $font: Verdana, Helvetica, Arial, sans-serif;
+// $font2: Verdana,  Helvetica, Arial, sans-serif;
+
+$font: "Roboto", Helvetica, Arial, sans-serif;

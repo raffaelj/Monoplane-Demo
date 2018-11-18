@@ -1,0 +1,42 @@
+//// mixins
+
+// box-sizing
+@mixin box-sizing($box) {
+  -webkit-box-sizing: $box;
+     -moz-box-sizing: $box;
+          box-sizing: $box;
+}
+// word-wrap
+@mixin word-wrap() {
+       word-break: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+}
+@mixin hyphens($val) {
+  -webkit-hyphens: $val;
+     -moz-hyphens: $val;
+          hyphens: $val;
+}
+
+////////// breakpoints
+@mixin breakpoint($point) {
+  // @if $point == tiny {
+    // @media (max-width: 600px) {@content;}
+  // }
+  // @if $point == small {
+    // @media (min-width: 601px) {@content;}
+  // }
+  @if $point == medium {
+    @media (min-width: 760px) {@content;}
+  }
+  // @if $point == mediumplus {
+    // @media (min-width: 890px) {@content;}
+  // }
+  // @if $point == normal {
+    // @media (min-width: 1000px) {@content;}
+  // }
+  // @if $point == wide {
+    // @media (min-width: 1200px) {@content;}
+  // }
+}

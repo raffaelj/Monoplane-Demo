@@ -1,0 +1,369 @@
+/*
+  source: Classless Project, https://github.com/fiatjaf/classless/blob/master/themes/creative-portfolio/src/theme.css
+  adapted by: Raffael Jesche
+*/
+
+$font-size: 16px;
+$font: "Roboto", Helvetica, Arial, sans-serif;
+
+$color-white: #fff;
+$color-bg: #f4f4f4;
+
+$color-main:#ef5285;
+$color-main-dark:#e01557;
+
+$color-text: #000000;
+$color-text-light: #999;
+$color-text-dark: #555;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font;
+  font-size: $font-size;
+  line-height: 1.55;
+  color: $color-text;
+  background-color: $color-bg;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  line-height: 1.2;
+  font-weight: 700px;
+}
+
+a {
+  color: $color-main;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover,
+a:focus {
+  color: $color-main-dark;
+  text-decoration: underline;
+}
+
+a,
+button {
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+blockquote {
+  padding: 12px 24px;
+  margin: 0 0 24px;
+  font-size: 16px;
+  border-left: 5px solid $color-main;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 25% auto;
+  // grid-template-rows: auto auto 400px 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-areas: 
+    'header main'
+    'nav main'    // moved order
+    'aside main'  // moved order
+    'footer main';
+  align-content: start;
+}
+
+body > header { grid-area: header; }
+body > nav { grid-area: nav; }
+body > aside { grid-area: aside; }
+body > footer { grid-area: footer; }
+body > main { grid-area: main; }
+
+article header aside {
+  padding: 0 20px 15px;
+}
+  article header aside time {
+    color: $color-text-light;
+  }
+  article header aside ul {
+    list-style: none;
+    display: inline;
+  }
+    article header aside li {
+      display: inline;
+    }
+      article header aside li a {
+        margin: 0 2px;
+        padding: 4px 6px;
+        text-decoration: none;
+        color: $color-text;
+        border: none;
+        font-size: 10px;
+        opacity: 0.8;
+        text-transform: uppercase;
+      }
+
+body > header {
+  padding: 40px 35px 20px;
+}
+  body > header h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+    body > header a {
+      color: $color-text;
+    }
+      body > header a:hover {
+        text-decoration: none;
+        color: $color-text;
+        border-bottom: dotted 1px $color-main;
+      }
+  body > header > img,
+  body > header > a,
+  body > header > a > img {
+    width: 100%;
+  }
+
+body > nav a,
+body > aside a,
+body > footer a {
+  color: $color-text-dark;
+  text-decoration: none;
+}
+  body > nav a:hover,
+  body > aside a:hover,
+  body > footer a:hover {
+    color: $color-main;
+  }
+
+body > nav {
+  padding: 0 35px;
+}
+  body > nav ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+    body > nav li {
+      margin-bottom: 5px;
+    }
+      body > nav li::before {
+        content: '>';
+        margin: 0 5px 0 -15px;
+        color: $color-text-light;
+      }
+        body > nav li:hover::before {
+          color: $color-main;
+        }
+      body > nav li a {
+        text-decoration: none;
+      }
+        body > nav li a:hover {
+          text-decoration: none;
+        }
+
+body > main {
+  min-height: 100vh;
+  height: 100%;
+}
+  main > section {
+    height: 83vh;
+    min-height: 500px;
+    padding: 40px 15px 0;
+  }
+    main > section > ul {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: flex-start;
+      justify-content: flex-start;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+      main > section > ul > li {
+        background: $color-white;
+        margin-bottom: 30px;
+        width: 20vw;
+        margin: 15px;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+        box-shadow: 0 0 5px #ccc;
+        max-height: 1000px;
+        overflow: hidden;
+      }
+        main > section > ul > li:hover {
+          box-shadow: 0 0 5px $color-text-light;
+        }
+        main > section > ul > li header {}
+          main > section > ul > li header img {
+            width: 100%;
+            display: block;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+          }
+            main > section > ul > li header img:hover {
+              opacity: 0.4;
+            }
+          main > section > ul > li header h1 {
+            padding: 15px 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0;
+          }
+          main > section > ul > li header a {
+            color: $color-text;
+            border-bottom: solid 1px transparent;
+            text-decoration: none;
+          }
+            main > section > ul > li header a:hover {
+              border-bottom: dotted 1px $color-main;
+              color: $color-text;
+              text-decoration: none;
+            }
+        main > section > ul > li div {
+          padding: 0 20px 15px 20px;
+          color: $color-text-light;
+          font-size: 14px;
+          max-height: 140px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+  main > footer {}
+    main > footer nav {}
+      main > footer nav ul {
+        list-style: none;
+        margin: 20px 0;
+        text-align: center;
+        font-size: 26px;
+      }
+        main > footer nav li {
+          display: inline;
+        }
+        main > footer nav a {
+          display: none;
+          color: $color-text;
+        }
+        main > footer nav a[href] { display: inline; }
+        main > footer nav a:hover {
+          text-decoration: none;
+        }
+  
+  main > article {
+    background: $color-white;
+    color: $color-text-light;
+    padding: 40px 55px 0;
+    min-height: 100vh;
+    height: 100%;
+  }
+    main > article header {
+      width: 66.67%;
+    }
+      main > article header h1 {
+        font-size: 48px;
+        margin-top: 20px;
+      }
+      main > article header h1 a {
+        color: inherit;
+      }
+    main > article > div {
+      width: 66.67%;
+    }
+      main > article img {
+        max-width: 100%;
+        margin: auto;
+      }
+      main > article h1,
+      main > article h2,
+      main > article h3 {
+        font-size: 38px;
+        margin: 0 0 24px 0;
+        color: $color-text;
+      }
+      main > article h1 { font-size: 38px; }
+      main > article h2 { font-size: 30px; }
+      main > article h3 { font-size: 22px; }
+
+      main > article ul {
+        list-style: none;
+      }
+        main > article > div ul li::before {
+          content: '>';
+          margin: 0 5px 0 -15px;
+          color: $color-main;
+        }
+          main > article > div ul li a {
+            text-decoration: none;
+          }
+
+body > aside {
+  padding: 0 35px;
+  color: $color-text-light;
+  border-top: 4px solid;//added border
+}
+
+body > footer {
+  padding: 0 35px 10px;
+  margin-top: 20px;
+  color: $color-text-light;
+  align-self: end;
+  border-top: 4px solid;//added border
+}
+
+/* responsiveness */
+@media (max-width: 760px) {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      'header'
+      'nav'
+      'main'
+      'aside'
+      'footer'
+  }
+
+  body > main,
+  body > aside,
+  body > footer,
+  main > section {
+    height: auto;
+    width: 100%;
+  }
+
+  main > section > ul {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  main > section > ul > li {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  main > article header,
+  main > article > div {
+    width: 100%;
+  }
+}

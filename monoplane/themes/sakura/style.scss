@@ -1,0 +1,51 @@
+
+$border-radius: .2rem;
+// $font-size:1.8rem;
+$font-size:.9em;
+// $border-radius: 0;
+
+
+@import "sakura";
+@import "../_sass/mixins";
+@import "../_sass/base";
+@import "../_sass/form";
+@import "nav";
+
+footer{
+  border-top: 1px solid #ccc;
+}
+
+header {
+  position:relative;
+  text-align: center;
+  a.logo{
+    &:hover{
+      text-decoration:none;
+      border:none;
+    }
+    img{
+      width:200px;
+    }
+  }
+}
+
+nav {
+  text-align:center;
+}
+
+@media (min-width: 760px) {
+  header,nav{
+    text-align:left;
+  }
+}
+@media (min-width: 1200px) {
+  
+  header a.logo, body > aside {
+    position:absolute;
+    margin-left:-240px;
+    width:200px;
+  }
+  header h1{
+    text-align:left;
+  }
+}

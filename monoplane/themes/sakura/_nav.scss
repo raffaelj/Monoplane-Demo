@@ -1,0 +1,16 @@
+nav {
+  ul {
+    list-style-type:none;
+    padding:0;
+    li {
+      display:inline-block;
+      margin: 0 .5rem;
+      &:first-of-type{
+        margin-left:0;
+      }
+      &:last-of-type{
+        margin-right:0;
+      }
+    }
+  }
+}
