@@ -3,7 +3,7 @@
 // contact form submit redirect
 // to do: redirect to itself and skip this step
 
-$cockpit->bind('/submit/:form', function($params){
+$app->bind('/submit/:form', function($params){
 
     // to do:
     // should be handled in Monoplane class without extra bind
@@ -14,16 +14,15 @@ $cockpit->bind('/submit/:form', function($params){
 
 // base
 
-$cockpit->bind('/', function($params){
-    
-    // $slug = '5bed483433386215d8000260';
-    $slug = 'about';
-    
+$app->bind('/', function($params){
+
+    $slug = $this->monoplane['startpage'];
+
     return $this->invoke('Monoplane\\Controller\\Monoplane', 'index', ['slug' => $slug]);
 
 });
 
-$cockpit->bind('/*', function($params){
+$app->bind('/*', function($params){
 
     return $this->invoke('Monoplane\\Controller\\Monoplane', 'index', ['slug' => $params[':splat']]);
 

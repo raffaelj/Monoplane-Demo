@@ -30,9 +30,7 @@ class Monoplane extends \LimeExtra\Controller {
         $this->app->renderer->extend(function($content){
             // to do:
             // * customizable with user variables
-            // * call a helper function
-            /* return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("cockpit")->thumbnail(["src" => "#uploads:".$2, "width" => "200"]); ?>', $content); */
-            return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("cockpit")->thumb(["src" => "#uploads:".$2, "width" => $app->monoplane["featured_image_width"] ?? "200"]); ?>', $content);
+            return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("monoplane")->thumbnail(["src" => "#uploads:".$2, "width" => $app->monoplane["featured_image_width"] ?? "200"]); ?>', $content);
 
         });
 
@@ -87,31 +85,5 @@ class Monoplane extends \LimeExtra\Controller {
         }
 
     }
-/* 
-    // helper for dev debug info, will be deleted later
-    public function debugVars($app) {
-        
-        $vars = [
-            'app_important_routes' => [
-                'route' => $app['route'],
-                'base_url' => $app['base_url'],
-                'base_route' => $app['base_route'],
-                'base_host' => $app['base_host'],
-                'base_port' => $app['base_port'],
-                'docs_root' => $app['docs_root'],
-                'site_url' => $app['site_url'],
-            ],
-            'DOCUMENT_ROOT' => $_SERVER['DOCUMENT_ROOT'],
-            'cockpit_DIR' => dirname(dirname(__DIR__)), // may differ from DOCUMENT_ROOT (symlinks)
-            'user_constants' => get_defined_constants(true)['user'],
-            'app_paths' => $app['paths'],
-            'SERVER' => $_SERVER,
-            'app_config' => $app->config, // config.yaml + app defaults
-            // 'app' => $app, // the whole app, needs a few seconds to load/print
-        ];
 
-        echo '<pre>' . print_r($vars, true) . '</pre>';
-
-    }
- */
 }

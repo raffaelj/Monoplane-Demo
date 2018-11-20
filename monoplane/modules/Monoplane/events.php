@@ -1,7 +1,8 @@
 <?php
 
 // error handling
-$cockpit->on('after', function() {
+
+$app->on('after', function() {
 
     switch($this->response->status){
         case '404':
@@ -13,7 +14,7 @@ $cockpit->on('after', function() {
 
 // layout
 
-$cockpit->on('monoplane.nav', function($slug, $type = 'main'){
+$app->on('monoplane.nav', function($slug, $type = 'main'){
 
     // fields filter doesn't work with lang filter
     // to do: file issue
@@ -32,13 +33,13 @@ $cockpit->on('monoplane.nav', function($slug, $type = 'main'){
 
 });
 
-$cockpit->on('monoplane.footer', function(){
+$app->on('monoplane.footer', function(){
 
     echo $this->view('views:partials/footer.php');
 
 });
 
-$cockpit->on('monoplane.lang-chooser', function(){
+$app->on('monoplane.lang-chooser', function(){
 
     $languages = [['i18n' => 'en', 'language' => 'English']];
 
@@ -57,7 +58,7 @@ $cockpit->on('monoplane.lang-chooser', function(){
 
 });
 
-$cockpit->on('monoplane.theme-chooser', function(){
+$app->on('monoplane.theme-chooser', function(){
 
     $themes = [];
 
@@ -80,7 +81,7 @@ $cockpit->on('monoplane.theme-chooser', function(){
 
 // contact form
 
-$cockpit->on('frontend.contactform', function($slug = ''/*, $response = []*/){
+$app->on('frontend.contactform', function($slug = ''/*, $response = []*/){
 
     // to do:
     // * add some logic to use slugs for e. g. multiple forms

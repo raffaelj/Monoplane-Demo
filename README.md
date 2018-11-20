@@ -12,6 +12,32 @@ Place the files in this structure:
   yourCustomFiles...
 ```
 
+Content of `.htaccess`:
+
+```
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # rules for Cockpit
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
+```
+
+Content of `index.php`:
+
+```
+<?php
+session_start();
+
+// load monoplane
+require_once('./monoplane/monoplane.php');
+
+// run app
+$cockpit->run();
+```
+
 ## Requirements
 
 * Cockpit CMS
@@ -21,19 +47,8 @@ Place the files in this structure:
 
 ## to do
 
-* base
-  * [x] simple output
-  * [x] cleanup
-  * [ ] ...
 * contact form
-  * [x] form quote escape
   * [ ] tests, tests, tests
-* i18n
-  * [x] content
-  * [x] site
-  * [x] base
-  * [x] contact form
-* [x] change theme
 * [ ] install script
 * content
   * [ ] imprint
@@ -53,18 +68,10 @@ Place the files in this structure:
   * [ ] ...
 * [ ] GUI addon
 * [ ] JS mail pattern protection
-* [x] UniqueSlugs addon
 * [ ] custom startpage
 * [ ] cache
-* [x] convert md to html before output
 * [ ] errors
 * [ ] feed
 * [ ] sitemap
-* [ ] easteregg
-* [x] check themes for third party requests (fonts)
-* [x] defines check when mp is root OR is parallel
-* [ ] register monoplane as module
-  * [ ] change `$cockpit` to `$app`
-  * [ ] helper functions with `$app->module('monoplane')->extend([...])`
 * [ ] favicon
 * [ ] ...
