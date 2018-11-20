@@ -11,6 +11,27 @@ img {
 
 nav > ul {
   padding:0;
+  a {
+    position:relative;
+    &:hover, &:focus, &:active, &.active {
+      &:before,&:after{
+        font-size: 1.2em;
+        position:absolute;
+        top:.7em;
+      }
+      &:before{
+        content: '[';
+        left:0;
+      }
+      &:after{
+        content: ']';
+        right:0;
+      }
+    }
+    &.active:before, &.active:after{
+      font-weight: bold;
+    }
+  }
 }
 
 body {

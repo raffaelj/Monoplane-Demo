@@ -31,6 +31,9 @@ header {
 
 nav {
   text-align:center;
+  a.active{
+    color:inherit;
+  }
 }
 
 @media (min-width: 760px) {
@@ -42,10 +45,18 @@ nav {
   
   header a.logo, body > aside {
     position:absolute;
-    margin-left:-240px;
     width:200px;
+    margin-left:-240px;
+    margin-top:1em;
+  }
+  body > aside {
+    top: 240px;
   }
   header h1{
     text-align:left;
+  }
+  aside > nav{
+    text-align:center;
+    
   }
 }

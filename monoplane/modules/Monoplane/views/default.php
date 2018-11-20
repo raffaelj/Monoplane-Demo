@@ -1,6 +1,8 @@
 <?php
 /*
-  To do: cleanup, $title etc. should be in Monoplane class
+  To do:
+    * cleanup, $title etc. should be in Monoplane class
+    * remove header aside OR add options to site singleton
 */
 if (empty($site)) {
     $site = $app->site;
@@ -16,7 +18,7 @@ $description = htmlspecialchars($description);
 
 ?>
 <!DOCTYPE html>
-<html lang="{{ $_SESSION['lang'] ?? $app['i18n'] }}">
+<html lang="{{ $app('i18n')->locale }}">
     <head>
         <meta charset="utf-8" />
         <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -29,10 +31,10 @@ $description = htmlspecialchars($description);
         <meta property="og:description" content="{{ $description }}" />
         <meta property="og:title" content="{{ $title }}" />
         <meta property="twitter:title" content="{{ $title }}" />
- 
+
         <link rel="stylesheet" type="text/css" href="@style('style.min.css')?v={{ $app->monoplane['theme'] . $app->monoplane['version'] }}" /> 
 
-        @if($app->monoplane['customcss'])
+        @if(!empty($app->monoplane['customcss']))
         <style>
             {{ $app->monoplane['customcss'] }}
         </style>
@@ -72,7 +74,7 @@ $description = htmlspecialchars($description);
         </header>
 
         <nav>
-            @trigger('monoplane.nav', [$page['_id'] ?? '', 'main'])
+            @trigger('monoplane.nav', [$page[$app->monoplane['slug']] ?? '', 'main'])
         </nav>
         <aside>
             <nav>

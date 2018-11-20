@@ -4,3 +4,7 @@
 @import "webfonts";
 @import "creative-portfolio";
 @import "form";
+
+nav a.active, nav a.active:before{
+  color:$color-text-light;
+}

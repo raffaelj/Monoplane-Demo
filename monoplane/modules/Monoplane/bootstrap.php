@@ -9,29 +9,23 @@ $app->set('docs_root',  DOCS_ROOT . '/'); // for pathToUrl() without ":", assets
 // set path
 $app->path('views',   __DIR__ . '/views');
 $app->path('themes',  __DIR__ . '/themes');
-$app->path('root',  MONOPLANE_ROOT);
+$app->path('root',    MONOPLANE_ROOT);
 
 // pass custom layout file to LimeExtra
 $app->layout = 'views:default.php';
 
 
-
-
 // include Controller
 require_once('Controller/Monoplane.php');
 
-// include binds
+// include binds, events and defaults
 include('binds.php');
-
-// include layout events
 include('events.php');
-
-// include defaults;
 include('defaults.php');
+
 
 // init + load i18n
 $app('i18n')->locale = $app->retrieve('i18n', 'en');
-// $locale = $app->module('cockpit')->getUser('i18n', $app('i18n')->locale);
 $locale = $app->param('lang') ?? ($_SESSION['lang'] ?? null);
 
 if ($translationspath = $app->path(MONOPLANE_ROOT . "/config/i18n/{$locale}.php")) {
@@ -44,17 +38,22 @@ if ($translationspath = $app->path("#config:formvalidation/i18n/{$locale}.php"))
     $app('i18n')->load($translationspath, $locale);
 }
 
-// $app->module('cockpit')->extend([
+
 $app->module('monoplane')->extend([
+
     'thumbnail' => function($options) {
+
+        // return relative path of thumbnail
 
         $thumb_url = $this->app->module('cockpit')->thumbnail($options);
 
         return BASE_URL . mb_substr($thumb_url, mb_strlen($this->app['site_url']));
 
     }
+
 ]);
 
+// load custom bootstrap.php to overwrite default options
 if ($custombootfile = $app->path('root:config/bootstrap.php')) {
     include($custombootfile);
 }

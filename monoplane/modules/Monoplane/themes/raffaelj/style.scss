@@ -44,6 +44,10 @@ main #markdown-toc{
   float:right;
   position:sticky;
 }
+nav a.active{
+  font-weight:bold;
+  text-decoration:underline;
+}
 
 
 @media print{

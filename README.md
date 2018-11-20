@@ -49,6 +49,8 @@ $cockpit->run();
 
 * contact form
   * [ ] tests, tests, tests
+  * [ ] split into separate module
+  * [ ] clear form button
 * [ ] install script
 * content
   * [ ] imprint
@@ -60,18 +62,14 @@ $cockpit->run();
 * [ ] docs
 * [ ] donation options
 * [ ] custom views
-* [ ] helper functions
-  * [ ] getStyleUrl
-  * [ ] output formats
-    * [ ] md2html
-    * [ ] ...
-  * [ ] ...
 * [ ] GUI addon
 * [ ] JS mail pattern protection
 * [ ] custom startpage
 * [ ] cache
 * [ ] errors
-* [ ] feed
+* [ ] feed --> write XML API addon as Feed addon replacement
 * [ ] sitemap
 * [ ] favicon
+* [ ] fix black background of transparent png thumbnail
+* [ ] nested nav
 * [ ] ...
