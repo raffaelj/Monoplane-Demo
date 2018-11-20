@@ -19,14 +19,20 @@ class Monoplane extends \LimeExtra\Controller {
 
         // extend lexy parser
         $this->app->renderer->extend(function($content){
-            return preg_replace('/(\s*)@uploads\((.+?)\)/', '$1<?php $app->base("/storage/uploads" . $2); ?>', $content);
+            return preg_replace('/(\s*)@uploads\((.+?)\)/', '$1<?php echo BASE_URL; $app->base("#uploads:" . $2); ?>', $content);
         });
+        
+        $this->app->renderer->extend(function($content){
+            return preg_replace('/(\s*)@style\((.+?)\)/', '$1<?php echo BASE_URL; $app->base("themes:" . ($_SESSION["theme"] ?? $app->monoplane["theme"]) . "/" . $2); ?>', $content);
+        });
+        
 
         $this->app->renderer->extend(function($content){
             // to do:
             // * customizable with user variables
             // * call a helper function
-            return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("cockpit")->thumbnail(["src" => "#uploads:".$2, "width" => "200"]); ?>', $content);
+            /* return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("cockpit")->thumbnail(["src" => "#uploads:".$2, "width" => "200"]); ?>', $content); */
+            return preg_replace('/(\s*)@thumbnail\((.+?)\)/', '$1<?php echo $app->module("cockpit")->thumb(["src" => "#uploads:".$2, "width" => $app->monoplane["featured_image_width"] ?? "200"]); ?>', $content);
 
         });
 

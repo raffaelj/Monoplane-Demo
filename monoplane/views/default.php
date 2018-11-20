@@ -29,12 +29,12 @@ $description = htmlspecialchars($description);
         <meta property="og:description" content="{{ $description }}" />
         <meta property="og:title" content="{{ $title }}" />
         <meta property="twitter:title" content="{{ $title }}" />
-
-        <link rel="stylesheet" type="text/css" href="@base('themes:' . ($_SESSION['theme'] ?? $app->monoplane['theme']) . '/style.min.css')?v=' . $app->monoplane['theme'] . $app->monoplane['version'] . '" />
+ 
+        <link rel="stylesheet" type="text/css" href="@style('style.min.css')?v={{ $app->monoplane['theme'] . $app->monoplane['version'] }}" /> 
 
         @if($app->monoplane['customcss'])
         <style>
-        {{ $app->monoplane['customcss'] }}
+            {{ $app->monoplane['customcss'] }}
         </style>
         @endif
 

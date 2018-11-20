@@ -7,28 +7,23 @@ if (file_exists('defines.php')) include('defines.php');
 if (!defined('ADMINFOLDER'))        define('ADMINFOLDER', 'cockpit');
 
 // monoplane is in root or in subdir of root
-if (!defined('DOCS_ROOT'))          define('DOCS_ROOT', str_replace(DIRECTORY_SEPARATOR, '/', realpath(file_exists(__DIR__.'/index.php') ? dirname(__DIR__) : dirname(dirname(__DIR__)))));
-
-if (!defined('BASE_URL'))           define('BASE_URL', dirname(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH))); // needs check if isset SCRIPT_NAME...
+if (!defined('BASE_ROOT'))          define('BASE_ROOT', str_replace(DIRECTORY_SEPARATOR, '/', realpath(file_exists(__DIR__.'/index.php') ? dirname(__DIR__) : dirname(dirname(__DIR__)))));
+if (!defined('DOCS_ROOT'))          define('DOCS_ROOT', str_replace(DIRECTORY_SEPARATOR, '/', realpath(file_exists(__DIR__.'/index.php') ? __DIR__ : dirname(__DIR__))));
+$BASE_URL = dirname(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH));
+if (!defined('BASE_URL'))           define('BASE_URL', $BASE_URL === '/' ? '' : $BASE_URL); // needs check if isset SCRIPT_NAME...
 if (!defined('ROUTE')) define('ROUTE', preg_replace('#'.preg_quote(BASE_URL, '#').'#', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 1));
 
-// Cockpit defines
-if (!defined('COCKPIT_DIR'))        define('COCKPIT_DIR', DOCS_ROOT . BASE_URL . '/' . ADMINFOLDER);
-if (!defined('COCKPIT_BASE_URL'))   define('COCKPIT_BASE_URL', BASE_URL . '/' . ADMINFOLDER);
-if (!defined('COCKPIT_BASE_ROUTE')) define('COCKPIT_BASE_ROUTE', COCKPIT_BASE_URL);
-if (!defined('COCKPIT_DOCS_ROOT'))  define('COCKPIT_DOCS_ROOT', COCKPIT_DIR);
 
-// $COCKPIT_SITE_DIR = dirname(dirname(__DIR__));
-// if (!defined('COCKPIT_SITE_DIR')) define('COCKPIT_SITE_DIR', str_replace(DIRECTORY_SEPARATOR, '/', $COCKPIT_SITE_DIR)); // E:/git
-
-
+// defines
+if (file_exists(__DIR__.'/cockpit_defines.php')) include(__DIR__.'/cockpit_defines.php');
 
 // include cockpit
-require_once('../' . ADMINFOLDER . '/bootstrap.php');
+require_once(realpath(dirname(__DIR__)) . '/' . ADMINFOLDER . '/bootstrap.php');
 
 $cockpit->set('route', ROUTE);
-$cockpit->set('base_route', BASE_URL);// for reroute()
-$cockpit->set('docs_root', DOCS_ROOT . '/');// for assets ('#uploads' etc.)
+$cockpit->set('base_url', BASE_URL);// pathToUrl() with ":" and @base
+$cockpit->set('base_route', BASE_URL);// for reroute() and route
+$cockpit->set('docs_root', DOCS_ROOT . '/');// for pathToUrl() without ":", assets ('#uploads' etc.)
 
 // set path
 $cockpit->path('views', __DIR__ . '/views');
@@ -72,8 +67,29 @@ if ($translationspath = $cockpit->path("#config:formvalidation/i18n/{$locale}.ph
     $cockpit('i18n')->load($translationspath, $locale);
 }
 
+$cockpit->module('cockpit')->extend([
+    'thumb' => function($options) {
+
+        $thumb_url = $this->app->module('cockpit')->thumbnail($options);
+
+        return BASE_URL . mb_substr($thumb_url, mb_strlen($this->app['site_url']));
+
+    }
+]);
+
 
 // echo '<pre>' . print_r(realpath($_SERVER['DOCUMENT_ROOT']), true) . '</pre>';
 // echo '<pre>' . print_r(get_defined_constants(true)['user'], true) . '</pre>';
 // echo '<pre>' . print_r($cockpit->config, true) . '</pre>';
+// $vars = [
+    // 'route' => $cockpit['route'],
+    // 'base_url' => $cockpit['base_url'],
+    // 'base_route' => $cockpit['base_route'],
+    // 'base_host' => $cockpit['base_host'],
+    // 'base_port' => $cockpit['base_port'],
+    // 'docs_root' => $cockpit['docs_root'],
+    // 'site_url' => $cockpit['site_url'],
+// ];
+
+// echo '<pre>' . print_r($vars, true) . '</pre>';
 
