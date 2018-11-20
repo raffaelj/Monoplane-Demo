@@ -54,5 +54,7 @@ $cockpit->monoplane['contactform'] = [
     'session_expire' => 120
 ];
 
+$cockpit->monoplane['featured_image_width'] = 500;
+
 // run app
 $cockpit->run();
