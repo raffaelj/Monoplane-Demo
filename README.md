@@ -38,6 +38,16 @@ require_once('./monoplane/monoplane.php');
 $cockpit->run();
 ```
 
+## install
+
+* ssh on your server
+* `cd` into your root
+* `wget` and `unzip` this repo
+* `cd install`
+* `./install.sh`
+* ready :-)
+
+
 ## Requirements
 
 * Cockpit CMS
@@ -47,11 +57,14 @@ $cockpit->run();
 
 ## to do
 
+* demo data
+  * [ ] pages collection
+  * [ ] config singleton
+* [x] install script
 * contact form
   * [ ] tests, tests, tests
   * [ ] split into separate module
   * [ ] clear form button
-* [ ] install script
 * content
   * [ ] imprint
   * [ ] privacy

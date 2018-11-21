@@ -1,0 +1,29 @@
+{
+    "site_name": "Monoplane Demo wtf wtf wtf wtf",
+    "slogan": "Go ahead with a head for a headless CMS!",
+    "logo": {
+        "path": "\/2018\/11\/18\/5bf1732237a44monoplane-logo.svg",
+        "title": "monoplane-logo.svg",
+        "mime": "image\/svg+xml",
+        "description": "",
+        "tags": [],
+        "size": 10781,
+        "image": true,
+        "video": false,
+        "audio": false,
+        "archive": false,
+        "document": false,
+        "code": false,
+        "created": 1542550306,
+        "modified": 1542550306,
+        "_by": "5bed43b733386215d800003e",
+        "folder": "",
+        "_id": "5bf1732233386207280002ae"
+    },
+    "site_description": "Monoplane is a small front-end for the fast and headless Cockpit CMS. Create a simple portfolio website with a contact form or extend it with custom code. It's written in PHP, HTML and CSS.",
+    "_mby": "5bf44ed83338620f240003b4",
+    "_by": "5bed43b733386215d800003e",
+    "site_name_de": "Monoplane Demo",
+    "slogan_de": "Ein Frontend auf Knopfdruck statt kopflos im Cockpit!",
+    "site_description_de": "Monoplane ist ein schmales Frontend f\u00fcr das schnelle \"headless\" Cockpit CMS. Erstelle eine simple Portfolio-Webseite mit einem Kontaktformular oder erweitere sie mit eigenem Code. Es ist in PHP, HTML und CSS geschrieben."
+}
