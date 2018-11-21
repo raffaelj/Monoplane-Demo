@@ -15,7 +15,6 @@
   'Send' => 'Absenden',
   
   // form field labels and infos
-  // not possible right now in 
   'Name' => 'Name',
   'Telephone' => 'Telefon',
   'Mail Address' => 'E-Mail-Adresse',

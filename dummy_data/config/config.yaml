@@ -1,0 +1,19 @@
+
+groups:
+    visitor:
+        $admin: false
+        cockpit:
+            backend: true
+        singletons:
+            singleton_edit: false
+            singleton_form: true
+        forms:
+            manage: false
+        
+
+languages:
+    de: Deutsch
+
+unique_slugs:
+    collections:
+        pages: title

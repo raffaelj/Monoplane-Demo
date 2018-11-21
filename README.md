@@ -12,6 +12,42 @@ Place the files in this structure:
   yourCustomFiles...
 ```
 
+Content of `.htaccess`:
+
+```
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # rules for Cockpit
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
+```
+
+Content of `index.php`:
+
+```
+<?php
+session_start();
+
+// load monoplane
+require_once('./monoplane/monoplane.php');
+
+// run app
+$cockpit->run();
+```
+
+## install
+
+* ssh on your server
+* `cd` into your root
+* `wget` and `unzip` this repo
+* `cd install`
+* `./install.sh`
+* ready :-)
+
+
 ## Requirements
 
 * Cockpit CMS
@@ -21,20 +57,14 @@ Place the files in this structure:
 
 ## to do
 
-* base
-  * [x] simple output
-  * [x] cleanup
-  * [ ] ...
+* demo data
+  * [ ] pages collection
+  * [ ] config singleton
+* [x] install script
 * contact form
-  * [x] form quote escape
   * [ ] tests, tests, tests
-* i18n
-  * [x] content
-  * [x] site
-  * [x] base
-  * [x] contact form
-* [x] change theme
-* [ ] install script
+  * [ ] split into separate module
+  * [ ] clear form button
 * content
   * [ ] imprint
   * [ ] privacy
@@ -45,26 +75,14 @@ Place the files in this structure:
 * [ ] docs
 * [ ] donation options
 * [ ] custom views
-* [ ] helper functions
-  * [ ] getStyleUrl
-  * [ ] output formats
-    * [ ] md2html
-    * [ ] ...
-  * [ ] ...
 * [ ] GUI addon
 * [ ] JS mail pattern protection
-* [x] UniqueSlugs addon
 * [ ] custom startpage
 * [ ] cache
-* [x] convert md to html before output
 * [ ] errors
-* [ ] feed
+* [ ] feed --> write XML API addon as Feed addon replacement
 * [ ] sitemap
-* [ ] easteregg
-* [x] check themes for third party requests (fonts)
-* [x] defines check when mp is root OR is parallel
-* [ ] register monoplane as module
-  * [ ] change `$cockpit` to `$app`
-  * [ ] helper functions with `$app->module('monoplane')->extend([...])`
 * [ ] favicon
+* [ ] fix black background of transparent png thumbnail
+* [ ] nested nav
 * [ ] ...
