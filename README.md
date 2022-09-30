@@ -1,5 +1,7 @@
 # Monoplane Demo
 
+**This repository is archived and not maintained anymore.**
+
 Place the files in this structure:
 
 ```
